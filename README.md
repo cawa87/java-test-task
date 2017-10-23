@@ -24,4 +24,8 @@
 - Code should be written in a readable and maintainable way
 - The solution can use any sound technology/library in Java, bare minimum is Spring
 
+### How to:
+- Plain build with Main file located in com.example.Main
+- Simple HATEOAS like `curl http://localhost:8080/accounts` and `curl -i -X POST -H "Content-Type:application/json" -d "{  \"email\" : \"email@example.com\",  \"name\" : \"Admin\" }" http://localhost:8080/accounts`
+
 
