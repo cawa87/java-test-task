@@ -27,5 +27,6 @@
 ### How to:
 - Plain build with Main file located in com.example.Main
 - Simple HATEOAS like `curl http://localhost:8080/accounts` and `curl -i -X POST -H "Content-Type:application/json" -d "{  \"email\" : \"email@example.com\",  \"name\" : \"Admin\", \"accountDetailsId\" : 5}" http://localhost:8080/accounts`
+- `curl http://localhost:8080/accountDetails?id=3`
 
 
