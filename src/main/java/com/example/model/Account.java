@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 public class Account extends AbstractPersistable<Long> {
     private String email;
     private String name;
+    private Integer accountDetailsId;
 
     public String getEmail() {
         return email;
@@ -26,5 +27,13 @@ public class Account extends AbstractPersistable<Long> {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Integer getAccountDetailsId() {
+        return accountDetailsId;
+    }
+
+    public void setAccountDetailsId(Integer accountDetailsId) {
+        this.accountDetailsId = accountDetailsId;
     }
 }
