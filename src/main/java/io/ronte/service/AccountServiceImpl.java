@@ -1,10 +1,13 @@
 package io.ronte.service;
 
+import io.ronte.exception.AccountNotFoundException;
 import io.ronte.model.Account;
 import io.ronte.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class AccountServiceImpl implements AccountService {
@@ -38,13 +41,9 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public Account findById(long id) {
+    public Optional<Account> findById(long id) {
         Account account = accountRepository.findOne(id);
-
-        if (account == null) {
-            throw new AccountNotFoundException(id);
-        }
-        return account;
+        return Optional.ofNullable(account);
     }
 
     @Override

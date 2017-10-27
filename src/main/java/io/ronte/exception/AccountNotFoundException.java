@@ -1,4 +1,4 @@
-package io.ronte.service;
+package io.ronte.exception;
 
 public class AccountNotFoundException extends RuntimeException {
 

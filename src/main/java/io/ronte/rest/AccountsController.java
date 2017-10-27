@@ -1,7 +1,8 @@
 package io.ronte.rest;
 
+import io.ronte.exception.AccountNotFoundException;
+import io.ronte.exception.ExceptionUtils;
 import io.ronte.model.Account;
-import io.ronte.service.AccountNotFoundException;
 import io.ronte.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -10,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Future;
 
@@ -32,21 +34,25 @@ public class AccountsController {
     @GetMapping(value = "/{id}")
     public Future<Account> getOne(@PathVariable long id) {
         return CompletableFuture
-                .supplyAsync(() -> accountService.findById(id))
-                .exceptionally(e -> {
-                    throw (RuntimeException) e.getCause();
+                .supplyAsync(() -> {
+                    Optional<Account> accountOptional = accountService.findById(id);
+                    return accountOptional.orElseThrow(() -> new AccountNotFoundException(id));
+                }).exceptionally(t -> {
+                    ExceptionUtils.handleFutureException(t);
+                    return null;
                 });
     }
 
     @PutMapping(value = "/{id}")
-    public Future<Account> updateOne(@RequestBody Account account, @PathVariable long id) {
+    public Future<?> updateOne(@RequestBody Account account, @PathVariable long id) {
         return CompletableFuture
                 .supplyAsync(() -> {
                     account.setId(id);
                     return accountService.update(account);
                 })
-                .exceptionally(e -> {
-                    throw (RuntimeException) e.getCause();
+                .exceptionally(t -> {
+                    ExceptionUtils.handleFutureException(t);
+                    return null;
                 });
     }
 
