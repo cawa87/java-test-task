@@ -1,0 +1,6 @@
+account.details.service:
+  host: tls-test.scnetservices.ru
+  port: 9000
+  pool:
+    maxConnectionsCount: 10
+    maxPendingAcquires: 1000

@@ -3,6 +3,8 @@ package io.ronte.rest;
 import io.ronte.exception.AccountNotFoundException;
 import io.ronte.exception.ExceptionUtils;
 import io.ronte.model.Account;
+import io.ronte.model.AccountDetailsResponse;
+import io.ronte.service.AccountDetailsService;
 import io.ronte.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -20,10 +22,12 @@ import java.util.concurrent.Future;
 public class AccountsController {
 
     private final AccountService accountService;
+    private final AccountDetailsService accountDetailsService;
 
     @Autowired
-    public AccountsController(AccountService accountService) {
+    public AccountsController(AccountService accountService, AccountDetailsService accountDetailsService) {
         this.accountService = accountService;
+        this.accountDetailsService = accountDetailsService;
     }
 
     @PostMapping
@@ -65,6 +69,12 @@ public class AccountsController {
     @GetMapping
     public Future<Iterable<Account>> findAll() {
         return CompletableFuture.supplyAsync(accountService::findAll);
+    }
+
+    @GetMapping(value = "/{id}/details")
+    public Future<AccountDetailsResponse> getAccountDetials(@PathVariable long id) {
+        return CompletableFuture
+                .supplyAsync(() -> accountDetailsService.getAccountDetails(id));
     }
 
     @DeleteMapping
