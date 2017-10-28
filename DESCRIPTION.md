@@ -3,7 +3,7 @@
 ## How to build and run
 
  To build and run the application you need the JDK 8 to be installed.
- Project was build and tested on Oracle JDK 8u121.
+ Project was built and tested on Oracle JDK 8u121.
  
  ##### Building and running on Linux/macOS
  
