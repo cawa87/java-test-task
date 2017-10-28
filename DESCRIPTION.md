@@ -3,6 +3,7 @@
 ## How to build and run
 
  To build and run the application you need the JDK 8 to be installed.
+ Project was build and tested on Oracle JDK 8u121.
  
  ##### Building and running on Linux/macOS
  
@@ -10,7 +11,8 @@
  
 ##### Building and running on Windows
  
- `gradlew.bat clean build && java -jar build/libs/java-test-task-0.0.1-SNAPSHOT.jar`
+ `gradlew.bat clean build`
+ `java -jar build/libs/java-test-task-0.0.1-SNAPSHOT.jar`
  
  ##### REST API docs
  
