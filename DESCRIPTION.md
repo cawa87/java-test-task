@@ -10,7 +10,7 @@
  
 ##### Building and running on Windows
  
- `./gradlew clean build && java -jar build/libs/java-test-task-0.0.1-SNAPSHOT.jar`
+ `gradlew.bat clean build && java -jar build/libs/java-test-task-0.0.1-SNAPSHOT.jar`
  
  ##### REST API docs
  
