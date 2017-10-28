@@ -27,13 +27,11 @@ public class DefaultChannelPoolHandler implements ChannelPoolHandler {
 
     public void channelReleased(Channel ch) throws Exception {
         logger.debug("Channel released:" + ch);
-
     }
 
     public void channelCreated(Channel ch) throws Exception {
         ChannelPipeline pipeline = ch.pipeline();
         logger.debug("Channel created:" + ch);
-
 
         pipeline.addLast(sslCtx.newHandler(ch.alloc(), host, port));
         pipeline.addLast(new DelimiterBasedFrameDecoder(4096, Delimiters.lineDelimiter()));
