@@ -12,6 +12,12 @@
  
  `./gradlew clean build && java -jar build/libs/java-test-task-0.0.1-SNAPSHOT.jar`
  
+ ##### REST API docs
+ 
+ After launching the app, use Swagger UI:
+ 
+ http://localhost:8080/swagger-ui.html
+ 
 ## Implementation comments
 
 * Task 1: Implemented non-blocking REST endpoints via Spring Boot, Java 8 CompletableFuture and embedded Undertow HTTP server.
