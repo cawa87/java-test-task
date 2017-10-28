@@ -14,7 +14,7 @@
  
 ## Implementation comments
 
-* Task 1: Implemented non-blocking REST endpoints via Spring Boot, Java 8 CompletableFuture and embedded Undertow HTTP server container.
+* Task 1: Implemented non-blocking REST endpoints via Spring Boot, Java 8 CompletableFuture and embedded Undertow HTTP server.
 * Task 2: Created high throughput SSL socket client with connection pooling via Netty (non-blocking IO). 
 For additional system reliability wrapped external system call with circuit breaker via Spring Cloud and Netflix Hystrix libraries.
  
