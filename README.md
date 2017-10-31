@@ -10,7 +10,7 @@
 
 Service URI `tls-test.scnetservices.ru:9000`
 
-To test it use - `openssl s_client -connect test.scnetservices.ru:9000`.
+To test it use - `openssl s_client -connect tls-test.scnetservices.ru:9000`.
 
 ### Optional functionality for bonus points:
 
