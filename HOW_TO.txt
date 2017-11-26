@@ -1,0 +1,19 @@
+Start->
+mvn spring-boot:run
+
+USE->
+https://localhost:8443/swagger-ui.html
+
+1. LoginController: Create login + token
+2. now you can CRUD now, providing auth information.
+- Search with ID in localDB, if not found request TSL
+when found in TSL add also to localDB
+
+
+* update => delete old and put new
+* in case of loginController put new == update
+
+application.properties - configuration
+
+UNIT test on service layer.. Could be also MOCK_MVC on controller, but it will be to much for test task, including that
+controller test is not actually unit test it is components test ^^
