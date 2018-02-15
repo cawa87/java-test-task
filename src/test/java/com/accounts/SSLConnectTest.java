@@ -1,5 +1,7 @@
 package com.accounts;
 
+import com.accounts.api.model.AccountDetail;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 
 import javax.net.ssl.SSLSocket;
@@ -10,6 +12,8 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.nio.*;
 
+import static org.junit.Assert.assertNotNull;
+
 /**
  * Created by pasha on 14.02.18.
  */
@@ -18,28 +22,10 @@ public class SSLConnectTest {
     private String url = "tls-test.scnetservices.ru";
     private int port = 9000;
     private String writeTestAcc = "{\"id\":2}\n";
+    private ObjectMapper objectMapper = new ObjectMapper();
 
     @Test
-    public void testSSL() throws IOException {
-        InetAddress adr = InetAddress.getByName(url);
-        Socket clientSocket = SSLSocketFactory.getDefault().createSocket(adr, port);
-
-        ByteBuffer sendBuffer = ByteBuffer.allocate(10000);
-        sendBuffer.put(writeTestAcc.getBytes());
-
-        clientSocket.getOutputStream().write(sendBuffer.array());
-        System.out.println(clientSocket.isConnected());
-
-        byte[] receiveBuffer = new byte[100000];
-
-        while (clientSocket.getInputStream().read(receiveBuffer) != -1) {
-            System.out.print(new String(receiveBuffer));
-        }
-
-    }
-
-    @Test
-    public void testSSL2() throws Exception {
+    public void testSSL() throws Exception {
         InetAddress adr = InetAddress.getByName(url);
 
         SSLSocketFactory sslsocketfactory = (SSLSocketFactory) SSLSocketFactory.getDefault();
@@ -58,7 +44,10 @@ public class SSLConnectTest {
 
         String string = null;
         string = bufferedreader.readLine();
-        System.out.println(string);
+        AccountDetail accountDetail = objectMapper.readValue(string, AccountDetail.class);
+        assertNotNull(accountDetail);
     }
+
+
 
 }

@@ -1,6 +1,6 @@
 package com.accounts.web;
 
-import com.accounts.model.Account;
+import com.accounts.api.model.Account;
 import com.accounts.service.AccountNotFoundException;
 import com.accounts.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;

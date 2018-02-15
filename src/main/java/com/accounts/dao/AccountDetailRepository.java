@@ -1,7 +1,7 @@
 package com.accounts.dao;
 
-import com.accounts.model.Account;
-import com.accounts.model.AccountDetail;
+import com.accounts.api.model.Account;
+import com.accounts.api.model.AccountDetail;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
