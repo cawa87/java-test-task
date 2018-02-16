@@ -29,4 +29,10 @@ public class Account implements Serializable {
     @Setter
     private AccountDetail accountDetail;
 
+    public Account() {}
+
+    public Account(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 }

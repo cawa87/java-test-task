@@ -19,8 +19,12 @@ import java.util.Optional;
 @RequestMapping(value = "accounts")
 public class AccountController {
 
-    @Autowired
     AccountService accountService;
+
+    @Autowired
+    public AccountController(AccountService accountService) {
+        this.accountService = accountService;
+    }
 
     @GetMapping("")
     public List<Account> retrieveAllAccounts() {
@@ -42,7 +46,7 @@ public class AccountController {
         accountService.deleteById(id);
     }
 
-    @PostMapping("/")
+    @PostMapping("")
     public ResponseEntity<Object> createAccount(@RequestBody Account account) {
         Account savedAccount = accountService.save(account);
 
