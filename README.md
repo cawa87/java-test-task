@@ -28,4 +28,13 @@ To test it use - `openssl s_client -connect tls-test.scnetservices.ru:9000`.
 - Code should be written in a readable and maintainable way
 - The solution can use any sound technology/library in Java, bare minimum is Spring
 
+## Requirements:
+- docker-compose
+## To start:
+1. ./mvnw clean package or mvnw.cmd (depends on OS)
+2. docker-compose up
+3. To check with postman set certificate and private key from etc folder
+4. Service address https://localhost:8443/accounts
+
+
 
