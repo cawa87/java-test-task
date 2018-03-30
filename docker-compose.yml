@@ -1,0 +1,28 @@
+version: '3'
+services:
+    postgresql:
+        build: postgres-init
+        env_file:
+            - .env
+        environment:
+            - POSTGRES_USER=$POSTGRES_USER
+            - POSTGRES_PASSWORD=$POSTGRES_PASSWORD
+        restart: always
+        ports:
+            - 6432:5432
+
+
+    accservice:
+        build: accservice
+        env_file:
+          - .env
+        environment:
+          POSTGRES_HOST: $POSTGRES_HOST
+          POSTGRES_PORT: $POSTGRES_PORT
+          POSTGRES_USER: $POSTGRES_USER
+          POSTGRES_PASSWORD: $POSTGRES_PASSWORD
+        restart: always
+        links:
+          - postgresql
+        ports:
+          - 8443:8443
